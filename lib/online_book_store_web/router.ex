@@ -7,6 +7,8 @@ defmodule OnlineBookStoreWeb.Router do
 
   scope "/api", OnlineBookStoreWeb do
     pipe_through :api
+    get "/books", BookController, :index
+    get "/books/:id", BookController, :show
   end
 
   # Enables LiveDashboard only for development
