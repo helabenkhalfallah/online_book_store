@@ -1,19 +1,30 @@
 # OnlineBookStore
 
-To start your Phoenix server:
+## Project
+We will try to make an Online Bookstore.
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Start Phoenix endpoint with `mix phx.server`
+## Possible use cases
+- get all books
+- get a book details
+- get all categories
+- get all authors
+- get books by category
+- get books by author
+- search a book by its name or author
+- add a review : comment and rating
+- update a review : comment and rating
+- user can order one or many books
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+## Constraints
+- a book can have only one author
+- a book can be associated only one category
+- a book can have zero to many reviews
+- an order can contains the same book only once time but with quantity from one to max
+- user can make a purchase that contains from one to many books orders
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
 
-## Learn more
+## Entity Relationship Diagram
+[<img src="https://miro.medium.com/max/1400/0*64mg2-S6t21PWPZ0">](https://medium.com/@helabenkhalfallah/building-a-json-rest-api-for-managing-an-online-bookstore-using-elixir-phoenix-and-postgresql-74f149d367a8)
 
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+## More details
+https://medium.com/@helabenkhalfallah/building-a-json-rest-api-for-managing-an-online-bookstore-using-elixir-phoenix-and-postgresql-74f149d367a8
