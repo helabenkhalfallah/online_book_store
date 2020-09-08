@@ -22,10 +22,8 @@ defmodule OnlineBookStoreWeb.AuthorController do
 
   def show(conn, %{"id" => id}) do
     IO.inspect("Get book for id: #{id}")
-    case AuthorSchema.get_author(id) do
-      nil -> {:error, :not_found}
-      author -> render(conn, "show.json", author: author)
-    end
+    author = AuthorSchema.get_author!(id)
+    render(conn, "show.json", author: author)
   end
 
   def update(conn, %{"id" => id, "author" => author_params}) do

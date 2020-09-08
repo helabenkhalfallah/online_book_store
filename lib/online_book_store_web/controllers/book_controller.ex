@@ -7,13 +7,11 @@ defmodule OnlineBookStoreWeb.BookController do
   action_fallback OnlineBookStoreWeb.FallbackController
 
   def index(conn, _params) do
-    IO.inspect("Get All Books")
     book = Schema.list_book()
     render(conn, "index.json", book: book)
   end
 
   def create(conn, %{"book" => book_params}) do
-    IO.inspect("Create book #{book_params}")
     with {:ok, %Book{} = book} <- Schema.create_book(book_params) do
       conn
       |> put_status(:created)
@@ -23,15 +21,11 @@ defmodule OnlineBookStoreWeb.BookController do
   end
 
   def show(conn, %{"id" => id}) do
-    IO.inspect("Get book for id: #{id}")
-    case Schema.get_book(id) do
-      nil -> {:error, :not_found}
-      book -> render(conn, "index.json", book: book)
-    end
+    book = Schema.get_book!(id)
+    render(conn, "show.json", book: book)
   end
 
   def update(conn, %{"id" => id, "book" => book_params}) do
-    IO.inspect("Update book #{book_params}")
     book = Schema.get_book!(id)
 
     with {:ok, %Book{} = book} <- Schema.update_book(book, book_params) do
@@ -40,7 +34,6 @@ defmodule OnlineBookStoreWeb.BookController do
   end
 
   def delete(conn, %{"id" => id}) do
-    IO.inspect("Delete book for id: #{id}")
     book = Schema.get_book!(id)
 
     with {:ok, %Book{}} <- Schema.delete_book(book) do

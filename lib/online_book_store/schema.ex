@@ -35,7 +35,7 @@ defmodule OnlineBookStore.Schema do
       ** (Ecto.NoResultsError)
 
   """
-  def get_book(id), do: Repo.get(Book, id)
+  def get_book!(id), do: Repo.get!(Book, id)
 
   @doc """
   Creates a book.
